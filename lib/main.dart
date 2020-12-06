@@ -35,11 +35,14 @@ class MyApp extends StatelessWidget {
                 ),
                 Text(
                   "Shop",
-                  style: TextStyle(fontSize: 30,letterSpacing: 1),
+                  style: TextStyle(fontSize: 30, letterSpacing: 1),
                 ),
                 Text(
                   "Anthropologie",
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,letterSpacing: 1),
+                  style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1),
                 )
               ],
             ),
@@ -60,21 +63,108 @@ class MyApp extends StatelessWidget {
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40),
-                  ),
-                  boxShadow: [BoxShadow(
-                    color: Colors.grey[300],
-                    blurRadius: 20,
-                    spreadRadius: 1,
-                  ),]
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey[300],
+                        blurRadius: 20,
+                        spreadRadius: 1,
+                      ),
+                    ]),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        buildColumntop("Candles", isSelected: true),
+                        buildColumntop("vases"),
+                        buildColumntop("bins"),
+                        buildColumntop("floral"),
+                        buildColumntop("decor"),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      physics: BouncingScrollPhysics(),
+                      child: Row(
+                        children: [
+                          buildColumnWithRow("1","25","Elementat Tin candle "),
+                          buildColumnWithRow("2","35","Summer candle "),
+                          buildColumnWithRow("3","55","Winter candle "),
+                          buildColumnWithRow("4","68","dummy candle "),
+                        ],
+                      ),
+                    )
+                  ],
                 ),
               ),
             )
           ],
         ),
       ),
+    );
+  }
+
+  Padding buildColumnWithRow(String image, String price , String titile) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+                          children: [
+                            Container(
+                                height: 220,
+                                width: 160,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                    child: Image.asset(
+                                        "assets/images/candel$image.jpg",fit: BoxFit.cover,))),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                             titile,
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "\$$price",
+                              style: TextStyle(fontSize: 20),
+                            )
+                          ],
+                        ),
+    );
+  }
+
+  Column buildColumntop(String txt, {bool isSelected = false}) {
+    return Column(
+      children: [
+        Text(
+          txt,
+          style: TextStyle(
+              color: isSelected ? Colors.black : Colors.grey, fontSize: 18),
+        ),
+        SizedBox(
+          height: 5,
+        ),
+        Container(
+          height: 5,
+          width: 5,
+          decoration: BoxDecoration(
+            color: Colors.black,
+            shape: BoxShape.circle,
+          ),
+        )
+      ],
     );
   }
 
