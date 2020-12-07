@@ -6,5 +6,5 @@
 
 
 #SCREENSHOT
-![alt text](https://github.com/abhi123vj/Shop-Anthropologie/tree/main/assets/images/ScreenShots?raw=true)
+![alt text](https://github.com/abhi123vj/Shop-Anthropologie/blob/main/assets/images/ScreenShots/GASS.png?raw=true)
 
