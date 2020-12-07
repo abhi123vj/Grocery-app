@@ -1,8 +1,10 @@
-#New Flutter Project
+## New Flutter Project
 
-#Shop Anthropologie
+      Shop Anthropologie
 
-#Day THREE
+## Day THREE
+
+    UI Completed
 
 
 #SCREENSHOT
