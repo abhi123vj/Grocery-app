@@ -45,6 +45,7 @@ class MyApp extends StatelessWidget {
                       letterSpacing: 1),
                 )
               ],
+              
             ),
             SizedBox(
               height: 20,
@@ -77,7 +78,7 @@ class MyApp extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 20,
+                      height: 40,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -97,10 +98,25 @@ class MyApp extends StatelessWidget {
                       physics: BouncingScrollPhysics(),
                       child: Row(
                         children: [
-                          buildColumnWithRow("1","25","Elementat Tin candle "),
-                          buildColumnWithRow("2","35","Summer candle "),
-                          buildColumnWithRow("3","55","Winter candle "),
-                          buildColumnWithRow("4","68","dummy candle "),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          buildColumnWithRow(
+                              "1", "25", "Elementat Tin candle "),
+                          buildColumnWithRow("2", "35", "Summer candle "),
+                          buildColumnWithRow("3", "55", "Winter candle "),
+                          buildColumnWithRow("4", "68", "dummy candle "),
+                        ],
+                      ),
+                    ),
+                    LineBar(),
+                    Padding(
+                      padding: const EdgeInsets.all(30),
+                      child: Row(
+                        children: [
+                          Text("Holiday Special", style: TextStyle(fontSize: 24)),
+                          Spacer(),
+                          Text("View All", style: TextStyle(fontSize: 20, color: Colors.grey)),
                         ],
                       ),
                     )
@@ -114,34 +130,36 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  Padding buildColumnWithRow(String image, String price , String titile) {
+  Padding buildColumnWithRow(String image, String price, String titile) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
-                          children: [
-                            Container(
-                                height: 220,
-                                width: 160,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(20),
-                                    child: Image.asset(
-                                        "assets/images/candel$image.jpg",fit: BoxFit.cover,))),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                             titile,
-                              style: TextStyle(fontSize: 16),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "\$$price",
-                              style: TextStyle(fontSize: 20),
-                            )
-                          ],
-                        ),
+        children: [
+          Container(
+              height: 220,
+              width: 160,
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(
+                    "assets/images/candel$image.jpg",
+                    fit: BoxFit.cover,
+                  ))),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            titile,
+            style: TextStyle(fontSize: 16),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            "\$$price",
+            style: TextStyle(fontSize: 20),
+          )
+        ],
+      ),
     );
   }
 
@@ -180,6 +198,30 @@ class MyApp extends StatelessWidget {
       ),
       shape: StadiumBorder(),
       color: isSelect ? Colors.pink[100] : Colors.grey[300],
+    );
+  }
+}
+
+class LineBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.grey[300],
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10), bottomLeft: Radius.circular(10))),
+      height: 5,
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.only(left: 40),
+      alignment: Alignment.centerLeft,
+      child: Container(
+        height: 5,
+        width: 100,
+        decoration: BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10), bottomLeft: Radius.circular(10))),
+      ),
     );
   }
 }
