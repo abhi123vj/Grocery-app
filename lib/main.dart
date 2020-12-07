@@ -45,7 +45,6 @@ class MyApp extends StatelessWidget {
                       letterSpacing: 1),
                 )
               ],
-              
             ),
             SizedBox(
               height: 20,
@@ -91,7 +90,9 @@ class MyApp extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 0,
+
+                      ///20
                     ),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -114,9 +115,23 @@ class MyApp extends StatelessWidget {
                       padding: const EdgeInsets.all(30),
                       child: Row(
                         children: [
-                          Text("Holiday Special", style: TextStyle(fontSize: 24)),
+                          Text("Holiday Special",
+                              style: TextStyle(fontSize: 24)),
                           Spacer(),
-                          Text("View All", style: TextStyle(fontSize: 20, color: Colors.grey)),
+                          Text("View All",
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.grey)),
+                        ],
+                      ),
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      physics: BouncingScrollPhysics(),
+                                          child: Row(
+                        children: [
+                          buildContainerBottom(),
+                           buildContainerBottom(),
+                            buildContainerBottom(),
                         ],
                       ),
                     )
@@ -130,14 +145,51 @@ class MyApp extends StatelessWidget {
     );
   }
 
+  Container buildContainerBottom() {
+    return Container(
+                        margin: EdgeInsets.only(left: 20),
+                        height: 150,
+                        width: 240,
+                        child: Row(
+                          children: [
+                            ClipRRect(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                child:
+                                    Image.asset("assets/images/candel1.jpg")),
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("Coconut Milk Bath "),
+                                  Text(
+                                    "16  oz",
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 18),
+                                  ),
+                                  Spacer(),
+                                  Text(
+                                    "\$ 26",
+                                    style: TextStyle(
+                                        fontSize: 24, fontWeight: FontWeight.w600),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+  }
+
   Padding buildColumnWithRow(String image, String price, String titile) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
           Container(
-              height: 220,
-              width: 160,
+              height: 100, //220
+              width: 80,
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Image.asset(
